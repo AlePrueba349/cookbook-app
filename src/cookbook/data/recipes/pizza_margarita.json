@@ -1,0 +1,26 @@
+{
+    "title": "Pizza Margarita",
+    "servings": 4,
+    "ingredients": [
+        {
+            "name": "Harina",
+            "quantity": 500,
+            "unit": "g"
+        },
+        {
+            "name": "Agua",
+            "quantity": 300,
+            "unit": "ml"
+        }
+    ],
+    "steps": [
+        {
+            "description": "Mezclar ingredientes",
+            "timer": 0
+        },
+        {
+            "description": "Amasar",
+            "timer": 10
+        }
+    ]
+}

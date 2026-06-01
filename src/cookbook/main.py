@@ -1,10 +1,13 @@
 from ingredient import Ingredient
 from step import Step
 from recipe import Recipe
-from cookbook import CookBook
+
+from storage.json_storage import JsonStorage
 
 
 def main():
+
+    storage = JsonStorage()
 
     pizza = Recipe("Pizza Margarita", 4)
 
@@ -24,13 +27,13 @@ def main():
         Step("Amasar", 10)
     )
 
-    pizza.show()
+    storage.save_recipe(pizza)
 
-    libro = CookBook("Recetas Italianas")
+    receta = storage.load_recipe(
+        "Pizza Margarita"
+    )
 
-    libro.add_recipe(pizza)
-
-    libro.show()
+    receta.show()
 
 
 if __name__ == "__main__":
