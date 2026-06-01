@@ -1,13 +1,15 @@
-from ingredient import Ingredient
-from step import Step
-from recipe import Recipe
+from cookbook.ingredient import Ingredient
+from cookbook.step import Step
+from cookbook.recipe import Recipe
 
-from storage.json_storage import JsonStorage
+from cookbook.storage.json_storage import JsonStorage
+from cookbook.managers.recipe_manager import RecipeManager
 
 
 def main():
 
     storage = JsonStorage()
+    manager = RecipeManager(storage)
 
     pizza = Recipe("Pizza Margarita", 4)
 
@@ -27,13 +29,18 @@ def main():
         Step("Amasar", 10)
     )
 
-    storage.save_recipe(pizza)
+    manager.save_recipe(pizza)
 
-    receta = storage.load_recipe(
+    print("\nRecetas disponibles:")
+
+    for recipe_name in manager.list_recipes():
+        print("-", recipe_name)
+
+    recipe = manager.get_recipe(
         "Pizza Margarita"
     )
 
-    receta.show()
+    recipe.show()
 
 
 if __name__ == "__main__":

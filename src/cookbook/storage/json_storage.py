@@ -1,8 +1,7 @@
 import json
 from pathlib import Path
-
-from recipe import Recipe
-
+from cookbook.recipe import Recipe
+from cookbook.utils import normalize_filename
 
 class JsonStorage:
 
@@ -17,7 +16,7 @@ class JsonStorage:
 
         filename = (
             self.data_folder /
-            f"{recipe.title.lower().replace(' ', '_')}.json"
+            f"{normalize_filename(recipe.title)}.json"
         )
 
         with open(filename, "w", encoding="utf-8") as file:
@@ -32,7 +31,7 @@ class JsonStorage:
 
         filename = (
             self.data_folder /
-            f"{recipe_name.lower().replace(' ', '_')}.json"
+            f"{normalize_filename(recipe_name)}.json"
         )
 
         with open(filename, "r", encoding="utf-8") as file:

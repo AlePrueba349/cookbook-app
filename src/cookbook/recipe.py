@@ -1,10 +1,14 @@
-from ingredient import Ingredient
-from step import Step
+import uuid
+from cookbook.ingredient import Ingredient
+from cookbook.step import Step
+
 
 
 class Recipe:
 
-    def __init__(self, title: str, servings: int = 1):
+    def __init__(self, title: str, servings: int = 1, recipe_id=None):
+
+        self.id = recipe_id or str(uuid.uuid4())
         self.title = title
         self.servings = servings
         self.ingredients = []
@@ -18,6 +22,7 @@ class Recipe:
 
     def to_dict(self):
         return {
+            "id": self.id,
             "title": self.title,
             "servings": self.servings,
             "ingredients": [
@@ -34,8 +39,9 @@ class Recipe:
     def from_dict(cls, data):
 
         recipe = cls(
-            data["title"],
-            data["servings"]
+            title=data["title"],
+            servings=data["servings"],
+            recipe_id=data["id"]
         )
 
         for ingredient_data in data["ingredients"]:

@@ -5,3 +5,6 @@ venv/
 .env
 .idea/
 .vscode/
+/exportar_codigo.py
+/codigo_fuente.txt
+/otros/
