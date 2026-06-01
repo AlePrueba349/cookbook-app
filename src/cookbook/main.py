@@ -1,16 +1,36 @@
+from ingredient import Ingredient
+from step import Step
 from recipe import Recipe
+from cookbook import CookBook
 
 
 def main():
-    recipe = Recipe("Pizza Margarita")
 
-    recipe.add_ingredient("500 g harina")
-    recipe.add_ingredient("300 ml agua")
+    pizza = Recipe("Pizza Margarita", 4)
 
-    recipe.add_step("Mezclar ingredientes")
-    recipe.add_step("Amasar durante 10 minutos")
+    pizza.add_ingredient(
+        Ingredient("Harina", 500, "g")
+    )
 
-    recipe.show()
+    pizza.add_ingredient(
+        Ingredient("Agua", 300, "ml")
+    )
+
+    pizza.add_step(
+        Step("Mezclar ingredientes")
+    )
+
+    pizza.add_step(
+        Step("Amasar", 10)
+    )
+
+    pizza.show()
+
+    libro = CookBook("Recetas Italianas")
+
+    libro.add_recipe(pizza)
+
+    libro.show()
 
 
 if __name__ == "__main__":
